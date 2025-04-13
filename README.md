@@ -12,3 +12,5 @@ Due to the hardcoded nature of quality, this mod utilizes new prototypes to repl
 # WARNING
 
 Uninstalling this mod will cause Factorio to delete ALL entities that are added by this mod. It is HIGHLY recommended that you keep a backup of your original save if you install this mod on an existing save. I'm new to Factorio modding, so any suggestions on how to fix this would be appreciated.
+
+There are currently no in-game settings for this mod, as adding them seems like it would be difficult with the way that the current Factorio settings system works. Once again, I'm new, so feel free to make any suggestions and/or contribute to the github.
