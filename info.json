@@ -1,0 +1,13 @@
+{
+    "name": "better-quality",
+    "version": "1.0.0",
+    "title": "Better Quality",
+    "author": "sSasha",
+    "factorio_version": "2.0",
+    "dependencies": [
+	"base >= 2.0.2",
+	"? space-age >= 2.0.2",
+	"? aai-loaders >= 0.2.5"
+    ],
+    "description": "Removes the quality penatly from speed modules and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage."
+}
