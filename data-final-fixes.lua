@@ -7,6 +7,7 @@ data.raw["module"]["speed-module-3"].effect = {speed = 0.5, consumption = 0.7}
 local qualities = table.deepcopy(data.raw["quality"])
 
 local new_entities = {}
+local new_items = {}
 
 for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
     for entity_name, entity_value in pairs(prototype_value) do
@@ -31,9 +32,15 @@ for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
                     end
                 end
                 table.insert(new_entities, new_entity)
+                local new_item = table.deepcopy(data.raw["item"][entity_name]) or table.deepcopy(data.raw["item-with-entity-data"][entity_name])
+                new_item.name = "sSashaQuality-" .. quality_name .. "-" .. new_item.name
+                new_item.place_result = new_entity.name
+                new_item.subgroup = nil
+                table.insert(new_items, new_item)
             end
         end
     end
 end
 
 data.extend(new_entities)
+data.extend(new_items)

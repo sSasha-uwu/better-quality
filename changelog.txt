@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+  Major Features:
+    - Made quality stats show up in the inventory by adding quality item prototypes (doesn't quite work with everything yet)
+  Bugfixes:
+    - Fixed quality belt placement being super janky and weird
+    - Fixed underground belt dragging from not properly spacing the undergrounds
+---------------------------------------------------------------------------------------------------
 Version: 1.0.2
   Bugfixes:
     - Fixed underground ghosts sometimes not having the proper rotation

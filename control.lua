@@ -28,13 +28,11 @@ local on_built = function (data)
         player = entity.last_user,
         spill = false,
     }
-    log(info.name)
-    local belt_to_ground = nil
+    local belt_to_ground_type = nil
     if entity.type == "underground-belt" then
-        belt_to_ground = entity.belt_to_ground_type
-        info.belt_to_ground = belt_to_ground
-        if belt_to_ground == "output" then
-            log("1before" .. info.direction) -- 0
+        belt_to_ground_type = entity.belt_to_ground_type
+        info.belt_to_ground = belt_to_ground_type
+        if belt_to_ground_type == "output" then
             if info.direction == defines.direction.north then
                 info.direction = defines.direction.south
             elseif info.direction == defines.direction.south then
@@ -44,7 +42,6 @@ local on_built = function (data)
             elseif info.direction == defines.direction.west then
                 info.direction = defines.direction.east
             end
-            log("1after" .. info.direction) -- 8
         end
     end
     if entity.type == "splitter" then
@@ -54,13 +51,30 @@ local on_built = function (data)
     end
     entity.destroy()
     local created_entity = surface.create_entity(info)
-    log("2before" .. created_entity.direction) -- 8
-    if created_entity.type == "underground-belt" and created_entity.belt_to_ground_type ~= belt_to_ground then
-        log("is different")
+    if created_entity.type == "underground-belt" and created_entity.belt_to_ground_type ~= belt_to_ground_type then
         created_entity.rotate()
     end
-    log("2after" .. created_entity.direction) -- 0
+end
+
+local on_inventory_changed = function (event)
+    local inventory = game.get_player(event.player_index).get_main_inventory()
+    if not inventory then return end
+    for i=1, #inventory do
+        local stack = inventory[i]
+        if not stack.valid_for_read then return end
+        if not stack then return end
+        if stack.quality.level == 0 then return end
+        if not check_entity(stack.name) then return end
+        local info = {
+            name = "sSashaQuality-" .. stack.quality.name .. "-" .. stack.name,
+            quality = stack.quality.name,
+            count = stack.count
+        }
+        stack.clear()
+        inventory.insert(info)
+    end
 end
 
 script.on_event(defines.events.on_built_entity, on_built)
 script.on_event(defines.events.on_robot_built_entity, on_built)
+script.on_event(defines.events.on_player_main_inventory_changed, on_inventory_changed)
