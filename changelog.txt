@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.6
+  Bugfixes:
+    - Entity replacement now supports Autobuild and other mods that place/revive entities via scripts
+---------------------------------------------------------------------------------------------------
 Version: 1.0.5
   Bugfixes:
     - Fixed Q-picked belts still having janky placement

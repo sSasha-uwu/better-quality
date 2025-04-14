@@ -98,4 +98,6 @@ end
 
 script.on_event(defines.events.on_built_entity, on_built)
 script.on_event(defines.events.on_robot_built_entity, on_built)
+script.on_event(defines.events.script_raised_built, on_built)
+script.on_event(defines.events.script_raised_revive, on_built)
 script.on_event(defines.events.on_player_main_inventory_changed, on_inventory_changed)
