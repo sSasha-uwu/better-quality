@@ -10,7 +10,8 @@ local new_entities = {}
 local new_items = {}
 
 for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
-    for entity_name, entity_value in pairs(prototype_value) do
+    for entity_name, _ in pairs(prototype_value) do
+        log("base item:" .. entity_name)
         for quality_name, quality_value in pairs(qualities) do
             if quality_value.level > 0 then
                 local new_entity = table.deepcopy(data.raw[prototype_name][entity_name])

@@ -101,7 +101,8 @@ CHANGED_ENTITIES = {
     }
 }
 
-if mods and mods["aai-loaders"] then
+if (mods and mods["aai-loaders"]) or (script and script.active_mods["aai-loaders"]) then
+    log("aai loaders active")
     CHANGED_ENTITIES["loader-1x1"]={ 
         ["aai-loader"]={
             ["speed"]={0.0375, 0.04375, 0.047916, 0.05625, 0.0625} -- 18, 21, 24, 27, 30 items/s

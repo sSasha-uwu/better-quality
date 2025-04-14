@@ -1,9 +1,11 @@
 require 'common'
 
 local controlled_entities = {}
+log("controlled entities")
 for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
     for entity_name, entity_value in pairs(prototype_value) do
         controlled_entities[entity_name] = true
+        log(entity_name)
     end
 end
 
@@ -15,7 +17,9 @@ end
 local on_built = function (data)
     local entity = data.entity
     if entity.quality.level == 0 then return end
-    if not check_entity(entity.name) then return end
+    log(entity.name)
+    if not check_entity(entity.name) then log("failed entity check") return end
+    log("succeeded entity check")
 
     local surface = entity.surface
     local info = {
@@ -49,8 +53,25 @@ local on_built = function (data)
 		info.splitter_input_priority = entity.splitter_input_priority
 		info.splitter_output_priority = entity.splitter_output_priority
     end
+    local has_recipe = HasRecipe(entity)
+    local has_modules = HasModules(entity)
+    local recipe, qual, modules
+    if has_recipe then
+        recipe, qual = entity.get_recipe()
+    end
+    if has_modules then
+        modules = entity.get_module_inventory().get_contents()
+    end
     entity.destroy()
     local created_entity = surface.create_entity(info)
+    if has_recipe then
+        created_entity.set_recipe(recipe, qual)
+    end
+    if has_modules then
+        for _, module in pairs(modules) do
+            created_entity.get_module_inventory().insert({name=module.name, count=module.count, quality=module.quality})
+        end
+    end
     if created_entity.type == "underground-belt" and created_entity.belt_to_ground_type ~= belt_to_ground_type then
         created_entity.rotate()
     end

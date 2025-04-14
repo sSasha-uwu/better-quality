@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+  Bugfixes:
+    - Fixed modded items not being properly replaced due to incorrect control logic
+    - Fixed recipes/modules sometimes not being retained when building ghosts
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
   Major Features:
     - Made quality stats show up in the inventory by adding quality item prototypes (doesn't quite work with everything yet)
