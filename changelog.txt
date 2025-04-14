@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.7
+  Bugfixes:
+    - Fixed quality belt dragging from placing the original underground belt instead of a quality one
+    - Fixed the upgrade planner not interacting quality entities
+    - NOTE: You can select quality items for filters in an upgrade planner by going to the `unsorted` tab and selecting the specific quality that you are trying to upgrade/downgrade. I'm not sure if fixing this is possible.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.6
   Bugfixes:
     - Entity replacement now supports Autobuild and other mods that place/revive entities via scripts
