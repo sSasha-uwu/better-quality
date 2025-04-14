@@ -15,11 +15,12 @@ for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
         for quality_name, quality_value in pairs(qualities) do
             if quality_value.level > 0 then
                 local new_entity = table.deepcopy(data.raw[prototype_name][entity_name])
-                new_entity.placeable_by = {item=new_entity.name, count=1, quality=quality_value}
                 new_entity.localised_name = {"entity-name." .. new_entity.name}
                 new_entity.localised_description = {"entity-description." .. new_entity.name}
                 new_entity.hidden = true
                 new_entity.name = "sSashaQuality-" .. quality_name .. "-" .. new_entity.name
+                new_entity.placeable_by = {item=new_entity.name, count=1, quality=quality_value}
+                new_entity.minable["result"] = new_entity.name
                 log(new_entity.name)
                 for stat_name, stat_value in pairs(CHANGED_ENTITIES[prototype_name][entity_name]) do
                     if IsDictionary(stat_value) then

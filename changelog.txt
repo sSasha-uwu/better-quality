@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.5
+  Bugfixes:
+    - Fixed Q-picked belts still having janky placement
+    - Fixed Q-picked undergrounds from not being spaced properly when dragged
+---------------------------------------------------------------------------------------------------
 Version: 1.0.4
   Bugfixes:
     - Fixed modded items not being properly replaced due to incorrect control logic
