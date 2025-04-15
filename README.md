@@ -1,5 +1,5 @@
 # better-quality
-Removes the quality penatly from speed modules and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage.
+Removes the quality penalty from speed modules and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage.
 
 Legendary values are 2x base with the exception of Locomotives, which halve the power draw (fuel consumption) and increase top speed by about 30%.
 
@@ -7,7 +7,7 @@ Currently supports both vanilla loaders and AAI loaders, but no other mods. Howe
 
 If you add support for a mod yourself, feel free to submit an issue/pull request on the github. I would be more than happy to accept your contribution.
 
-Due to the hardcoded nature of quality, this mod utilizes new prototypes to replace the original ones in order to increase the relevant stats. This process is automatic upon both player and robot placement, and will also update existing entities on load.
+Due to the hardcoded nature of quality, this mod utilizes new prototypes to replace the original ones in order to increase the relevant stats. This process is automatic upon both player and robot placement, and will also update existing entities on load. There are a few concessions made to ensure that modules and recipes are not deleted upon replacement, but not everything is supported at this moment. That being said, it shouldn't be too difficult to add.
 
 # WARNING
 
