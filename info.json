@@ -1,6 +1,6 @@
 {
     "name": "better-quality",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "title": "Better Quality",
     "author": "sSasha",
     "factorio_version": "2.0",
@@ -10,5 +10,5 @@
         "? space-age >= 2.0.2",
         "? aai-loaders >= 0.2.5"
     ],
-    "description": "Removes the quality penalty from speed modules and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage."
+    "description": "Adds options for speed module quality penalty and quality module quality bonuses and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage."
 }

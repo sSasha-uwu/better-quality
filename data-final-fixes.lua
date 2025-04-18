@@ -20,6 +20,7 @@ local qualities = table.deepcopy(data.raw["quality"])
 
 local new_entities = {}
 local new_items = {}
+local new_recipes = {}
 
 for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
     for entity_name, _ in pairs(prototype_value) do
@@ -53,6 +54,38 @@ for prototype_name, prototype_value in pairs(CHANGED_ENTITIES) do
             end
         end
     end
+end
+
+if settings.startup["centrifuge-2-enabled"].value then
+    local item_centrifuge_2 = table.deepcopy(data.raw["item"]["centrifuge"])
+    item_centrifuge_2.name = "centrifuge-2"
+    item_centrifuge_2.place_result = "centrifuge-2"
+    data.extend({item_centrifuge_2})
+
+    local recipe_centrifuge_2 = table.deepcopy(data.raw["recipe"]["centrifuge"])
+    recipe_centrifuge_2.name = "centrifuge-2"
+    recipe_centrifuge_2.ingredients =
+    {
+        {type = "item", name = "speed-module", amount = 4},
+        {type = "item", name = "centrifuge", amount = 2}
+    }
+    recipe_centrifuge_2.results = {{type="item", name="centrifuge-2", amount=1}}
+    data.extend({recipe_centrifuge_2})
+
+    local entity_centrifuge_2 = table.deepcopy(data.raw["assembling-machine"]["centrifuge"])
+    entity_centrifuge_2.name = "centrifuge-2"
+    entity_centrifuge_2.max_health = 400
+    entity_centrifuge_2.minable["result"] = "centrifuge-2"
+    entity_centrifuge_2.crafting_speed = 1.25
+    entity_centrifuge_2.energy_usage = "875kW"
+    entity_centrifuge_2.module_slots = 4
+    data.extend({entity_centrifuge_2})
+
+    table.insert(data.raw.technology["automation-3"].effects,
+    {
+        type = "unlock-recipe",
+        recipe = "centrifuge-2"
+    })
 end
 
 data.extend(new_entities)

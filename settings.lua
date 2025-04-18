@@ -1,5 +1,7 @@
 data:extend({
-    -- Speed Modules
+
+    -- Speed Modules --
+
     {
 		type="double-setting",
 		name="speed-module-1-quality-penalty",
@@ -18,7 +20,9 @@ data:extend({
 		setting_type="startup",
 		default_value=2.5,
 	},
-    -- Quality Modules
+
+    -- Quality Modules --
+
     {
 		type="double-setting",
 		name="quality-module-1-quality-bonus",
@@ -37,4 +41,12 @@ data:extend({
 		setting_type="startup",
 		default_value=2.5,
 	},
+
+    -- Centrifuge 2 --
+    {
+        type="bool-setting",
+        name="centrifuge-2-enabled",
+        setting_type="startup",
+        default_value=false,
+    }
 })
