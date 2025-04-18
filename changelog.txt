@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.8
+  Major Features:
+    - Added settings for speed module quality penalty
+    - Speed module quality penalty now defaults to no change from vanilla
+    - Added settings for quality module quality bonus (defaults to vanilla values)
+---------------------------------------------------------------------------------------------------
 Version: 1.0.7
   Bugfixes:
     - Fixed quality belt dragging from placing the original underground belt instead of a quality one

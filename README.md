@@ -1,5 +1,5 @@
 # better-quality
-Removes the quality penalty from speed modules and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage.
+Adds options for speed module quality penalty and quality module quality bonuses and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage.
 
 Legendary values are 2x base with the exception of Locomotives, which halve the power draw (fuel consumption) and increase top speed by about 30%.
 
@@ -13,4 +13,4 @@ Due to the hardcoded nature of quality, this mod utilizes new prototypes to repl
 
 Uninstalling this mod will cause Factorio to delete ALL entities that are added by this mod. It is HIGHLY recommended that you keep a backup of your original save if you install this mod on an existing save. I'm new to Factorio modding, so any suggestions on how to fix this would be appreciated.
 
-There are currently no in-game settings for this mod, as adding them seems like it would be difficult with the way that the current Factorio settings system works. Once again, I'm new, so feel free to make any suggestions and/or contribute to the github.
+There are currently no in-game settings for the quality scaling of items, as adding that seems difficult based on how Factorio's settings system works. Once again, I'm new, so feel free to make any suggestions and/or contribute to the github.

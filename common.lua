@@ -3,7 +3,7 @@
 -- This means that the fourth value is unused by default, but if you have a mod that adds a quality for that value, then it will work.
 -- If you have a mod that adds qualities beyond legendary, you will need to add those here.
 -- In the future, there will be an option to have these values increment by a fixed/multiplicative value instead of having to define the entire array manually.
--- Currently supports stats that are a maximum of two indentations deep (the storage tank is an example of max stat depth). Not sure if adding more is necessary, but if will if needed.
+-- Currently supports stats that are a maximum of two indentations deep (the storage tank is an example of max stat depth). Not sure if adding more is necessary, but will if needed.
 
 CHANGED_ENTITIES = {
     ["storage-tank"]={

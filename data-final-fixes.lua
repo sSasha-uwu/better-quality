@@ -1,8 +1,20 @@
 require 'common'
 
-data.raw["module"]["speed-module"].effect = {speed = 0.2, consumption = 0.5}
-data.raw["module"]["speed-module-2"].effect = {speed = 0.3, consumption = 0.6}
-data.raw["module"]["speed-module-3"].effect = {speed = 0.5, consumption = 0.7}
+local speed_module_1 = data.raw["module"]["speed-module"]
+local speed_module_2 = data.raw["module"]["speed-module-2"]
+local speed_module_3 = data.raw["module"]["speed-module-3"]
+
+local quality_module_1 = data.raw["module"]["quality-module"]
+local quality_module_2 = data.raw["module"]["quality-module-2"]
+local quality_module_3 = data.raw["module"]["quality-module-3"]
+
+speed_module_1.effect.quality = tonumber(settings.startup["speed-module-1-quality-penalty"].value) / 10 * -1
+speed_module_2.effect.quality = tonumber(settings.startup["speed-module-2-quality-penalty"].value) / 10 * -1
+speed_module_3.effect.quality = tonumber(settings.startup["speed-module-3-quality-penalty"].value) / 10 * -1
+
+quality_module_1.effect.quality = tonumber(settings.startup["quality-module-1-quality-bonus"].value) / 10
+quality_module_2.effect.quality = tonumber(settings.startup["quality-module-2-quality-bonus"].value) / 10
+quality_module_3.effect.quality = tonumber(settings.startup["quality-module-3-quality-bonus"].value) / 10
 
 local qualities = table.deepcopy(data.raw["quality"])
 
