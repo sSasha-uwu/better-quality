@@ -9,7 +9,7 @@ If you add support for a mod yourself, feel free to submit an issue/pull request
 
 Due to the hardcoded nature of quality, this mod utilizes new prototypes to replace the original ones in order to increase the relevant stats. This process is automatic upon both player and robot placement, and will also update existing entities on load. There are a few concessions made to ensure that modules and recipes are not deleted upon replacement, but not everything is supported at this moment. That being said, it shouldn't be too difficult to add.
 
-Additionally adds a Centrifuge 2 with stats based on the Assembling Machine 3 that is unlocked via Automation 3 research to make quality Centrifuge recipes more similar to quality Assembling Machine 3 recipes.
+Additionally adds an optional Centrifuge 2 with stats based on the Assembling Machine 3 that is unlocked via Automation 3 research to make quality Centrifuge recipes more similar to quality Assembling Machine 3 recipes.
 
 # WARNING
 
