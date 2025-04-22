@@ -1,12 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.0.9
+Version: 2.0.0
   Major Features:
+    - Sundered the mod in two! Now there is a Quality Library mod that allows anyone to easily add quality items (https://mods.factorio.com/mod/quality-lib). It's also a hard requirement for this mod (Factorio will download it for you). This mod now interfaces with that library while also adding the previous features.
+  Features:
+    - Added the option to change the Recycler's output position to the long side instead of the short side. This is useful for certain hyper-optimized Quality setups.
+  Bugfixes:
+    - Added a unique prefix to all entities, items, recipes, etc. This will unfortunately reset your settings, but will not break your save.
+    - Added a tint to the Centrifuge 2 entity and item so that it can be more easily distinguished from the vanilla Centrifuge.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.9
+  Features:
     - Added an optional Centrifuge 2 that is based on the stats of the Assembling Machine 3. Unlocked via Automation 3 research.
   Bugfixes:
     - Added Quality as a hard requirement.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.8
-  Major Features:
+  Features:
     - Added settings for speed module quality penalty.
     - Speed module quality penalty now defaults to no change from vanilla.
     - Added settings for quality module quality bonus (defaults to vanilla values).
@@ -32,7 +41,7 @@ Version: 1.0.4
     - Fixed recipes/modules sometimes not being retained when building ghosts.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.3
-  Major Features:
+  Features:
     - Made quality stats show up in the inventory by adding quality item prototypes (doesn't quite work with everything yet).
   Bugfixes:
     - Fixed quality belt placement being super janky and weird.

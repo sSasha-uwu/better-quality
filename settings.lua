@@ -1,22 +1,24 @@
+local common = require("__better-quality__.common")
+
 data:extend({
 
     -- Speed Modules --
 
     {
 		type="double-setting",
-		name="speed-module-1-quality-penalty",
+		name=common.mod_prefix .. "speed-module-1-quality-penalty",
 		setting_type="startup",
 		default_value=1.0,
 	},
     {
 		type="double-setting",
-		name="speed-module-2-quality-penalty",
+		name=common.mod_prefix .. "speed-module-2-quality-penalty",
 		setting_type="startup",
 		default_value=1.5,
 	},
     {
 		type="double-setting",
-		name="speed-module-3-quality-penalty",
+		name=common.mod_prefix .. "speed-module-3-quality-penalty",
 		setting_type="startup",
 		default_value=2.5,
 	},
@@ -25,19 +27,19 @@ data:extend({
 
     {
 		type="double-setting",
-		name="quality-module-1-quality-bonus",
+		name=common.mod_prefix .. "quality-module-1-quality-bonus",
 		setting_type="startup",
 		default_value=1.0,
 	},
     {
 		type="double-setting",
-		name="quality-module-2-quality-bonus",
+		name=common.mod_prefix .. "quality-module-2-quality-bonus",
 		setting_type="startup",
 		default_value=1.5,
 	},
     {
 		type="double-setting",
-		name="quality-module-3-quality-bonus",
+		name=common.mod_prefix .. "quality-module-3-quality-bonus",
 		setting_type="startup",
 		default_value=2.5,
 	},
@@ -45,8 +47,16 @@ data:extend({
     -- Centrifuge 2 --
     {
         type="bool-setting",
-        name="centrifuge-2-enabled",
+        name=common.mod_prefix .. "centrifuge-2-enabled",
         setting_type="startup",
         default_value=false,
-    }
+    },
+
+    -- Recycler --
+    {
+        type="bool-setting",
+        name=common.mod_prefix .. "alternative-recycler-output-location",
+        setting_type="startup",
+        default_value=false,
+    },
 })
