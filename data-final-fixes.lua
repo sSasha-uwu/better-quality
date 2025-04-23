@@ -1,5 +1,18 @@
 local common = require("__better-quality__.common")
 
+local function get_prototype_name(name, base_prototype)
+    for type_name in pairs(defines.prototypes[base_prototype]) do
+        local prototypes = data.raw[type_name]
+        if prototypes and prototypes[name] then
+            return type_name
+        end
+        if data.raw.item[name] then
+            return "item"
+        end
+    end
+    return nil
+end
+
 if common.config("bulk-recycler-enabled") then
     data:extend{
         {
@@ -39,7 +52,10 @@ if common.config("bulk-recycler-enabled") then
     for recipe_name, recipe_value in pairs(data.raw.recipe) do
         if recipe_name:sub(-#"-recycling") == "-recycling" then
             local bulk_recycling_recipe = table.deepcopy(recipe_value)
-            if bulk_recycling_recipe.ingredients[1].name == bulk_recycling_recipe.results[1].name then goto continue end
+            local item_name = bulk_recycling_recipe.ingredients[1].name
+            local item_type = get_prototype_name(item_name, "item")
+            if item_name == bulk_recycling_recipe.results[1].name then goto continue end
+            if not data.raw[item_type][item_name].stackable then goto continue end
             bulk_recycling_recipe.category = "recycling-bulk"
             bulk_recycling_recipe.energy_required = bulk_recycling_recipe.energy_required * 4
             bulk_recycling_recipe.ingredients[1].amount = 4

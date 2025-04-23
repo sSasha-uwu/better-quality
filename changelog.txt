@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.2
+  Bugfixes:
+    - Bulk recycling recipe generation now skips non-stackable items (will figure out a better solution later).
+---------------------------------------------------------------------------------------------------
 Version: 2.1.1
   Bugfixes:
     - Added a nil check to the bulk-recycling recipe generation function.
