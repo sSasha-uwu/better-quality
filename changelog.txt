@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.0
+  Features:
+    - Added an optional Optimization Module (Disabled by default). They are made from one Speed Module 3 and Productivity Module 3 and are unlocked via the `Quantum Processor` research. They can be placed in beacons and provide a small boost to speed and productivity at the cost of increased power draw and pollution. They're useless in machines and are generally worse than speed modules in beacons, but can be optimal in situations where throughput is limited, such as the upper rarity tiers of beaconed quality upcyclers.
+    - Added an optional Bulk Recycler (Disabled by default). Recycles four items at once in order to ensure that one item's worth of ingredients are always retrieved, thus preventing rng-related upstream bottlenecks in quality upcyclers.
+---------------------------------------------------------------------------------------------------
 Version: 2.0.0
   Major Features:
     - Sundered the mod in two! Now there is a Quality Library mod that allows anyone to easily add quality items (https://mods.factorio.com/mod/quality-lib). It's also a hard requirement for this mod (Factorio will download it for you). This mod now interfaces with that library while also adding the previous features.

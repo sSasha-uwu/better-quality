@@ -1,18 +1,86 @@
-# better-quality
-Adds options for speed module quality penalty and quality module quality bonuses and adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage.
+# Better Quality
+Adds quality scaling to belt speed, drill/pumpjack mining speed, cargo/fluid wagon size, storage tank size, and locomotive speed/power usage, adds options for speed module quality penalty, quality module quality bonus, and adds a number of optional quality-related entities.
 
-Legendary values are 2x base with the exception of Locomotives, which halve the power draw (fuel consumption) and increase top speed by about 30%.
+Made possible by the Quality Lib mod (https://mods.factorio.com/mod/quality-lib).
 
-Currently supports both vanilla loaders and AAI loaders, but no other mods. However, adding support for additional items, modded or not, is very easy and modular. See the `common.lua` file for an example of how the quality table structure works.
+## Features
 
-If you add support for a mod yourself, feel free to submit an issue/pull request on the github. I would be more than happy to accept your contribution.
+### Entity Quality stat scaling
 
-Due to the hardcoded nature of quality, this mod utilizes new prototypes to replace the original ones in order to increase the relevant stats. This process is automatic upon both player and robot placement, and will also update existing entities on load. There are a few concessions made to ensure that modules and recipes are not deleted upon replacement, but not everything is supported at this moment. That being said, it shouldn't be too difficult to add.
+Adds quality stat scaling to items that did not previously have them. Currently supports the listed items, including vanilla Loaders and AAI Loaders.
 
-Additionally adds an optional Centrifuge 2 with stats based on the Assembling Machine 3 that is unlocked via Automation 3 research to make quality Centrifuge recipes more similar to quality Assembling Machine 3 recipes.
+Quality scaling is slightly less than the default of vanilla (1.3x, 1.6x, 1.9x, 2.5x), mainly because it kept the final values at Legendary neat.
 
-# WARNING
+#### Transport Belt/Splitter/Underground Belt/Loader belt speed, Mining Drill/Pumpjack mining speed, Cargo Wagon/Fluid Wagon size, Storage Tank size:
 
-Uninstalling this mod will cause Factorio to delete ALL entities that are added by this mod. It is HIGHLY recommended that you keep a backup of your original save if you install this mod on an existing save. I'm new to Factorio modding, so any suggestions on how to fix this would be appreciated.
+    Uncommon:  1.2x
+    Rare:      1.4x
+    Epic:      1.6x
+    Legendary: 2.0x
 
-There are currently no in-game settings for the quality scaling of items, as adding that seems difficult based on how Factorio's settings system works. Once again, I'm new, so feel free to make any suggestions and/or contribute to the github.
+#### Locomotive top speed:
+
+    Uncommon:  1.04x
+    Rare:      1.08x
+    Epic:      1.12x
+    Legendary: 1.20x
+
+#### Locomotive fuel burn rate:
+
+    Uncommon:  0.9x
+    Rare:      0.8x
+    Epic:      0.7x
+    Legendary: 0.5x
+
+### Speed Module and Quality Module options (Optional)
+Provides mod options allowing the user to adjust the quality penalty of Speed Modules, and adjust the quality bonus of Quality Modules.
+
+### Optimization Module (Optional)
+
+Added to help optimize certain beacon setups, specifically beaconed quality upcyclers. This module can be added to beacons and provides a small amount of speed and productivity at the cost of increased power draw and pollution generated.
+
+This module is useless within machines and generally suboptimal within beacons, but can be an optimal -- albeit resource inefficient -- choice in situations where throughput is limited, such as the Assemblers and Recyclers handling higher rarity items within beaconed quality upcyclers.
+
+#### Default Stats (Adjustable in mod settings):
+
+    Speed:              1%
+    Productivity:       2%
+    Energy Consumption: 25%
+    Pollution:          5%
+
+#### Recipe:
+
+    In:   Speed Module 3 1x, Productivity Module 3 1x
+    Out:  Optimization Module 1x
+    Time: 60s
+
+Unlocked via the `Quantum Processor` research.
+
+### Centrifuge 2 (Optional)
+
+Added to help bridge the gap between the Centrifuge and Assembling Machine 3, specifically in terms of Quality recipes. Has very similar stats to the Assembling Machine 3.
+
+#### Stats:
+
+    Health:         400
+    Crafting Speed: 1.25
+    Energy Usage:   875kW
+    Module Slots:   4
+
+#### Recipe:
+
+    In:   Speed Module 4x, Centrifuge 4x
+    Out:  Centrifuge 2 1x
+    Time: 4s
+
+Unlocked via the `Automation 3` research.
+
+### Bulk Recycler (Optional)
+
+Added to fix issues with Recyclers causing upstream bottlenecks due to their RNG nature. The Bulk Recycler takes in four items instead of one, and outputs the ingredients of one item instead of 1/4th of an item.
+
+Stats are identical to the vanilla Recycler, and is unlocked from the same technology.
+
+### Alternative Recycler Output Location (Optional)
+
+Due to the shape of Recyclers, there is more space towards their long side as opposed to their short side when the Recycler is completely surrounded by Beacons. This option exists to shift the output towards the long side to allow for hyper-optimized beaconed Recycler setups.

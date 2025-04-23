@@ -2,50 +2,102 @@ local common = require("__better-quality__.common")
 
 local quality_lib = require('__quality-lib__.module')
 
+-- Recycler --
+
 if common.config("alternative-recycler-output-location") then
     data.raw["furnace"]["recycler"]["vector_to_place_result"] = {1.3, -0.5}
 end
 
-local speed_module_1 = data.raw["module"]["speed-module"]
-local speed_module_2 = data.raw["module"]["speed-module-2"]
-local speed_module_3 = data.raw["module"]["speed-module-3"]
+-- Modules --
 
-local quality_module_1 = data.raw["module"]["quality-module"]
-local quality_module_2 = data.raw["module"]["quality-module-2"]
-local quality_module_3 = data.raw["module"]["quality-module-3"]
+if common.config("optimization-module-enabled").value then
+    local optimization_module_internal_name = common.mod_prefix .. "optimization-module"
+    data:extend(
+        {
+        {
+                type = "module-category",
+                name = "optimization"
+            }
+        }
+    )
+    table.insert(data.raw["beacon"]["beacon"]["allowed_effects"], "optimization")
+    local optimization_module_item = table.deepcopy(data.raw["module"]["quality-module-3"])
+    optimization_module_item.category = "optimization"
+    optimization_module_item.name = optimization_module_internal_name
+    optimization_module_item.localised_description = {"item-description." .. optimization_module_internal_name}
+    optimization_module_item.icons = {
+        {
+            icon = optimization_module_item.icon,
+            tint = common.optimization_module_tint,
+        }
+    }
+    optimization_module_item.order = "d[optimization]-a[optimization-module]"
+    optimization_module_item.effect =
+    {
+        speed = common.config("optimization-module-speed-bonus").value / 100,
+        productivity = common.config("optimization-module-productivity-bonus").value / 100,
+        consumption = common.config("optimization-module-energy-consumption").value / 100,
+        pollution = common.config("optimization-module-pollution-multiplier").value / 100,
+    }
+    data.raw.module[optimization_module_internal_name] = optimization_module_item
 
-speed_module_1.effect.quality = tonumber(common.config("speed-module-1-quality-penalty").value) / 10 * -1
-speed_module_2.effect.quality = tonumber(common.config("speed-module-2-quality-penalty").value) / 10 * -1
-speed_module_3.effect.quality = tonumber(common.config("speed-module-3-quality-penalty").value) / 10 * -1
+    data.raw.recipe[optimization_module_internal_name] = {
+        type = "recipe",
+        name = optimization_module_internal_name,
+        enabled = false,
+        ingredients =
+        {
+            {type = "item", name = "productivity-module-3", amount = 1},
+            {type = "item", name = "speed-module-3", amount = 1},
+        },
+        energy_required = 60,
+        results = {{type="item", name=optimization_module_internal_name, amount=1}}
+    }
 
-quality_module_1.effect.quality = tonumber(common.config("quality-module-1-quality-bonus").value) / 10
-quality_module_2.effect.quality = tonumber(common.config("quality-module-2-quality-bonus").value) / 10
-quality_module_3.effect.quality = tonumber(common.config("quality-module-3-quality-bonus").value) / 10
+    table.insert(data.raw.technology["quantum-processor"].effects,
+    {
+        type = "unlock-recipe",
+        recipe = optimization_module_internal_name
+    })
+
+end
+
+for i=1,3 do
+    local x = ""
+    if i ~= 1 then x = "-" .. i end
+
+    data.raw["module"]["speed-module" .. x]["effect"]["quality"] = common.config("speed-module-" .. i .. "-quality-penalty").value / 10 * -1
+
+    data.raw["module"]["quality-module" .. x]["effect"]["quality"] = common.config("quality-module-" .. i .. "-quality-bonus").value / 10
+end
+
+-- Centrifuge 2 --
 
 if common.config("centrifuge-2-enabled").value then
+    local centrifuge_2_internal_name = common.mod_prefix .. "centrifuge-2"
     local item_centrifuge_2 = table.deepcopy(data.raw["item"]["centrifuge"])
-    item_centrifuge_2.name = common.mod_prefix .. "centrifuge-2"
-    item_centrifuge_2.place_result = common.mod_prefix .. "centrifuge-2"
+    item_centrifuge_2.name = centrifuge_2_internal_name
+    item_centrifuge_2.place_result = centrifuge_2_internal_name
     item_centrifuge_2.icons = {{
         icon = item_centrifuge_2.icon,
         tint = common.centrifuge_2_tint,
     }}
-    data.raw.item[common.mod_prefix .. "centrifuge-2"] = item_centrifuge_2
+    data.raw.item[centrifuge_2_internal_name] = item_centrifuge_2
 
     local recipe_centrifuge_2 = table.deepcopy(data.raw["recipe"]["centrifuge"])
-    recipe_centrifuge_2.name = common.mod_prefix .. "centrifuge-2"
+    recipe_centrifuge_2.name = centrifuge_2_internal_name
     recipe_centrifuge_2.ingredients =
     {
         {type = "item", name = "speed-module", amount = 4},
         {type = "item", name = "centrifuge", amount = 2}
     }
-    recipe_centrifuge_2.results = {{type="item", name=common.mod_prefix .. "centrifuge-2", amount=1}}
-    data.raw.recipe[common.mod_prefix .. "centrifuge-2"] = recipe_centrifuge_2
+    recipe_centrifuge_2.results = {{type="item", name=centrifuge_2_internal_name, amount=1}}
+    data.raw.recipe[centrifuge_2_internal_name] = recipe_centrifuge_2
 
     local entity_centrifuge_2 = table.deepcopy(data.raw["assembling-machine"]["centrifuge"])
-    entity_centrifuge_2.name = common.mod_prefix .. "centrifuge-2"
+    entity_centrifuge_2.name = centrifuge_2_internal_name
     entity_centrifuge_2.max_health = 400
-    entity_centrifuge_2.minable["result"] = common.mod_prefix .. "centrifuge-2"
+    entity_centrifuge_2.minable["result"] = centrifuge_2_internal_name
     entity_centrifuge_2.crafting_speed = 1.25
     entity_centrifuge_2.energy_usage = "875kW"
     entity_centrifuge_2.module_slots = 4
@@ -54,14 +106,16 @@ if common.config("centrifuge-2-enabled").value then
         graphic[3].tint = common.centrifuge_2_tint
         graphic[5].tint = common.centrifuge_2_tint
     end
-    data.extend({entity_centrifuge_2})
+    data:extend({entity_centrifuge_2})
 
     table.insert(data.raw.technology["automation-3"].effects,
     {
         type = "unlock-recipe",
-        recipe = common.mod_prefix .. "centrifuge-2"
+        recipe = centrifuge_2_internal_name
     })
 end
+
+-- Quality --
 
 quality_lib.add(
     {
