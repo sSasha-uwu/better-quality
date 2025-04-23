@@ -46,6 +46,8 @@ if common.config("bulk-recycler-enabled") then
             bulk_recycling_recipe.name = bulk_recycling_recipe.name .. "-bulk"
             for _, result_table in pairs(bulk_recycling_recipe.results) do
                 if result_table.amount then result_table.amount = result_table.amount * 4 end
+                if result_table.amount_min then result_table.amount_min = result_table.amount_min * 4 end
+                if result_table.amount_max then result_table.amount_max = result_table.amount_max * 4 end
                 result_table.extra_count_fraction = nil
                 result_table.probability = nil
             end

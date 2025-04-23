@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.1
+  Bugfixes:
+    - Added a nil check to the bulk-recycling recipe generation function.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.0
   Features:
     - Added an optional Optimization Module (Disabled by default). They are made from one Speed Module 3 and Productivity Module 3 and are unlocked via the `Quantum Processor` research. They can be placed in beacons and provide a small boost to speed and productivity at the cost of increased power draw and pollution. They're useless in machines and are generally worse than speed modules in beacons, but can be optimal in situations where throughput is limited, such as the upper rarity tiers of beaconed quality upcyclers.
