@@ -55,7 +55,8 @@ if common.config("bulk-recycler-enabled") then
             local item_name = bulk_recycling_recipe.ingredients[1].name
             local item_type = get_prototype_name(item_name, "item")
             if item_name == bulk_recycling_recipe.results[1].name then goto continue end
-            if not data.raw[item_type][item_name].stackable then goto continue end
+            -- if data.raw[item_type][item_name].flags and data.raw[item_type][item_name].flags["not-stackable"] then goto continue end
+            if item_type == "armor" then goto continue end
             bulk_recycling_recipe.category = "recycling-bulk"
             bulk_recycling_recipe.energy_required = bulk_recycling_recipe.energy_required * 4
             bulk_recycling_recipe.ingredients[1].amount = 4

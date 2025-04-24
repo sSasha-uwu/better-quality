@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.3
+  Bugfixes:
+    - Accidentally broke all of bulk recycling (oops).
+---------------------------------------------------------------------------------------------------
 Version: 2.1.2
   Bugfixes:
     - Bulk recycling recipe generation now skips non-stackable items (will figure out a better solution later).
