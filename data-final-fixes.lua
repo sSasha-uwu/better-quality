@@ -41,6 +41,7 @@ if common.config("bulk-recycler-enabled") then
     bulk_recycler_entity.name = bulk_recycler_internal_name
     bulk_recycler_entity.minable.result = bulk_recycler_internal_name
     bulk_recycler_entity.crafting_categories = {"recycling-bulk"}
+    bulk_recycler_entity.cant_insert_at_source_message_key = common.mod_prefix .. "inventory-restriction.cant-be-bulk-recycled"
     for _, graphic in pairs(bulk_recycler_entity.graphics_set.animation) do
         graphic.layers[1].tint = common.bulk_recycler_tint
     end
@@ -55,7 +56,7 @@ if common.config("bulk-recycler-enabled") then
             local item_name = bulk_recycling_recipe.ingredients[1].name
             local item_type = get_prototype_name(item_name, "item")
             if item_name == bulk_recycling_recipe.results[1].name then goto continue end
-            -- if data.raw[item_type][item_name].flags and data.raw[item_type][item_name].flags["not-stackable"] then goto continue end
+            if item_type and data.raw[item_type] and data.raw[item_type][item_name] and data.raw[item_type][item_name].flags and data.raw[item_type][item_name].flags["not-stackable"] then goto continue end
             if item_type == "armor" then goto continue end
             bulk_recycling_recipe.category = "recycling-bulk"
             bulk_recycling_recipe.energy_required = bulk_recycling_recipe.energy_required * 4

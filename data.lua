@@ -20,7 +20,8 @@ if common.config("optimization-module-enabled").value then
             }
         }
     )
-    table.insert(data.raw["beacon"]["beacon"]["allowed_effects"], "optimization")
+    data.raw.beacon.beacon.allowed_effects = {"consumption", "speed", "pollution","productivity"}
+    -- table.insert(data.raw["beacon"]["beacon"]["allowed_effects"], "optimization")
     local optimization_module_item = table.deepcopy(data.raw["module"]["quality-module-3"])
     optimization_module_item.category = "optimization"
     optimization_module_item.name = optimization_module_internal_name

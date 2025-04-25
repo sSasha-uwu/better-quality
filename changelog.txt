@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.1.6
+  Features:
+    - You get a nil check! You get a nil check! And you get a nil check!!
+---------------------------------------------------------------------------------------------------
+Version: 2.1.5
+  Features:
+    - Added another nil check to the bulk-recycling recipe generation function.
+---------------------------------------------------------------------------------------------------
+Version: 2.1.4
+  Features:
+    - Added a custom warning when attempting to bulk recycle an item that cannot be bulk recycled.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.3
   Bugfixes:
     - Accidentally broke all of bulk recycling (oops).

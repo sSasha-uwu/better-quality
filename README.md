@@ -84,3 +84,9 @@ Stats are identical to the vanilla Recycler, and is unlocked from the same techn
 ### Alternative Recycler Output Location (Optional)
 
 Due to the shape of Recyclers, there is more space towards their long side as opposed to their short side when the Recycler is completely surrounded by Beacons. This option exists to shift the output towards the long side to allow for hyper-optimized beaconed Recycler setups.
+
+## Warning
+
+Due to this mod adding new entities, if you ever uninstall this mod you will lose all entities that this mod replaced in your save. It is highly recommended that you make a backup of your save game if you install this mod.
+
+This is my first time using Lua and also my first Factorio mod, so if anyone has any ideas on how to make that less of an issue, or any suggestions for any other part of the mod, I highly appreciate them.
