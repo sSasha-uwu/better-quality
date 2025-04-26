@@ -1,10 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.0
+  Bugfixes:
+    - Made the codebase mildly less bad.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.6
-  Features:
+  Bugfixes:
     - You get a nil check! You get a nil check! And you get a nil check!!
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.5
-  Features:
+  Bugfixes:
     - Added another nil check to the bulk-recycling recipe generation function.
 ---------------------------------------------------------------------------------------------------
 Version: 2.1.4
