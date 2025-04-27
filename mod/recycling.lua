@@ -1,6 +1,6 @@
 local common = require("__better-quality__.common")
 
-local _, err
+local success, response
 
 local function alter_recycler_output_location()
     data.raw["furnace"]["recycler"]["vector_to_place_result"] = {1.3, -0.5}
@@ -91,28 +91,28 @@ local function generate_bulk_recycling_recipe(bulk_recycler_internal_name, recip
 end
 
 if common.config("alternative-recycler-output-location") then
-    _, err = pcall(alter_recycler_output_location)
-    if err then common.error_handler(err, "alter_recycler_output_location()") end
+    success, response = pcall(alter_recycler_output_location)
+    if response then common.error_handler(response, "alter_recycler_output_location()") end
 end
 
 if common.config("bulk-recycler-enabled") then
     local bulk_recycler_internal_name = common.mod_prefix .. "bulk-recycler"
 
-    _, err = pcall(generate_bulk_recycling_category)
-    if err then common.error_handler(err, "generate_bulk_recycling_category()") end
+    success, response = pcall(generate_bulk_recycling_category)
+    if not success and response then common.error_handler(response, "generate_bulk_recycling_category()") end
 
-    _, err = pcall(generate_bulk_recycler_item, bulk_recycler_internal_name)
-    if err then common.error_handler(err, "generate_bulk_recycler_item()") end
+    success, response = pcall(generate_bulk_recycler_item, bulk_recycler_internal_name)
+    if not success and response then common.error_handler(response, "generate_bulk_recycler_item()") end
 
-    _, err = pcall(generate_bulk_recycler_recipe, bulk_recycler_internal_name)
-    if err then common.error_handler(err, "generate_bulk_recycler_recipe()") end
+    success, response = pcall(generate_bulk_recycler_recipe, bulk_recycler_internal_name)
+    if not success and response then common.error_handler(response, "generate_bulk_recycler_recipe()") end
 
-    _, err = pcall(generate_bulk_recycler_entity, bulk_recycler_internal_name)
-    if err then common.error_handler(err, "generate_bulk_recycler_entity()") end
+    success, response = pcall(generate_bulk_recycler_entity, bulk_recycler_internal_name)
+    if not success and response then common.error_handler(response, "generate_bulk_recycler_entity()") end
     
     for recipe_name, recipe_value in pairs(data.raw.recipe) do
-        _, err = pcall(generate_bulk_recycling_recipe, bulk_recycler_internal_name, recipe_name, recipe_value)
-        if err then common.error_handler(err, "generate_bulk_recycling_recipe() | Recipe: " .. recipe_name) end
+        success, response = pcall(generate_bulk_recycling_recipe, bulk_recycler_internal_name, recipe_name, recipe_value)
+        if not success and response then common.error_handler(response, "generate_bulk_recycling_recipe() | Recipe: " .. recipe_name) end
     end
 
 end

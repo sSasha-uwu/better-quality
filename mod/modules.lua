@@ -1,6 +1,6 @@
 local common = require("__better-quality__.common")
 
-local _, err
+local success, response
 
 local function generate_optimization_module()
     local optimization_module_internal_name = common.mod_prefix .. "optimization-module"
@@ -66,11 +66,9 @@ local function alter_modules()
 end
 
 if common.config("optimization-module-enabled").value then
-
-    _, err = pcall(generate_optimization_module)
-    if err then common.error_handler(err, "generate_optimization_module()") end
-
+    success, response = pcall(generate_optimization_module)
+    if not success and response then common.error_handler(response, "generate_optimization_module()") end
 end
 
-_, err = pcall(alter_modules)
-if err then common.error_handler(err, "alter_modules()") end
+success, response = pcall(alter_modules)
+if not success and response then common.error_handler(response, "alter_modules()") end

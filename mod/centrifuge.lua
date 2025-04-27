@@ -1,6 +1,6 @@
 local common = require("__better-quality__.common")
 
-local _, err
+local success, response
 
 local function generate_centrifuge_2()
     local centrifuge_2_internal_name = common.mod_prefix .. "centrifuge-2"
@@ -45,8 +45,6 @@ local function generate_centrifuge_2()
 end
 
 if common.config("centrifuge-2-enabled").value then
-
-    _, err = pcall(generate_centrifuge_2)
-    if err then common.error_handler(err, "generate_centrifuge_2()") end
-
+    success, response = pcall(generate_centrifuge_2)
+    if not success and response then common.error_handler(response, "generate_centrifuge_2()") end
 end

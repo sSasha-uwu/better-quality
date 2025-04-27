@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.3.1
+  Bugfixes:
+    - Mining Drills now go faster with Quality levels instead of slower (i may be stupid)
+---------------------------------------------------------------------------------------------------
+Version: 2.3.0
+  Features:
+    - Update to Quality Lib 2.0.0 API changes.
+  Bugfixes:
+    - Train energy usage stat now uses effectivity instead of max power to lower power usage without reducing acceleration power (oops).
+---------------------------------------------------------------------------------------------------
 Version: 2.2.0
   Bugfixes:
     - Made the codebase mildly less bad.
