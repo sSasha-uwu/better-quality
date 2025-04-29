@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.0
+  Major Features:
+    - Added settings to the Quality scaling of all items.
+    - Added a Legendary tileability option for the vanilla Roboport. Causes the Logistic Area and Construction area to scale up to 64x64, and 128x128 respectively at Legendary, resulting in the Roboport perfectly covering 4 tiles with its Logistic Area and 16 tiles with its Construction Area.
+    - Added a Legendary tileability option for the vanilla Substation. Causes the Supply Area and Wire Reach to scale up to 32x32 and 32 respectively at Legendary, resulting in a Substation perfectly covering 1 tile with its Supply Area and Wire Reach.
+    - Added a Legendary tileability option for the vanilla Big Electric Pole. Causes the Wire Reach to scale up to 64 at Legendary, resulting in the Big Electric Pole's Wire Reach perfectly spanning the length of 2 tiles.
+---------------------------------------------------------------------------------------------------
 Version: 2.3.1
   Bugfixes:
     - Mining Drills now go faster with Quality levels instead of slower (i may be stupid)

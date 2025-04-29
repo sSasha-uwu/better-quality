@@ -105,4 +105,132 @@ data:extend({
         setting_type="startup",
         default_value=false,
     },
+
+    -- Transport Belts/Underground Belts/Splitters/Loaders --
+
+    {
+        type="string-setting",
+        name=common.mod_prefix .. "belt-speed-quality-scaling-method",
+        setting_type="startup",
+        allowed_values={"disabled", "delta_constant", "delta_additive", "delta_multiplicative"},
+        default_value="delta_additive"
+    },
+
+    {
+		type="double-setting",
+		name=common.mod_prefix .. "belt-speed-quality-scaling-value",
+		setting_type="startup",
+		default_value=0.2,
+	},
+
+    -- Storage Tanks --
+
+    {
+        type="string-setting",
+        name=common.mod_prefix .. "storage-tank-size-quality-scaling-method",
+        setting_type="startup",
+        allowed_values={"disabled", "delta_constant", "delta_additive", "delta_multiplicative"},
+        default_value="delta_additive"
+    },
+
+    {
+		type="double-setting",
+		name=common.mod_prefix .. "storage-tank-size-quality-scaling-value",
+		setting_type="startup",
+		default_value=0.2,
+	},
+
+    -- Locomotives --
+
+    {
+        type="string-setting",
+        name=common.mod_prefix .. "locomotive-speed-quality-scaling-method",
+        setting_type="startup",
+        allowed_values={"disabled", "delta_constant", "delta_additive", "delta_multiplicative"},
+        default_value="delta_constant"
+    },
+
+    {
+		type="double-setting",
+		name=common.mod_prefix .. "locomotive-speed-quality-scaling-value",
+		setting_type="startup",
+		default_value=0.05,
+	},
+
+    {
+        type="string-setting",
+        name=common.mod_prefix .. "locomotive-efficiency-quality-scaling-method",
+        setting_type="startup",
+        allowed_values={"disabled", "delta_constant", "delta_additive", "delta_multiplicative"},
+        default_value="delta_additive"
+    },
+
+    {
+		type="double-setting",
+		name=common.mod_prefix .. "locomotive-efficiency-quality-scaling-value",
+		setting_type="startup",
+		default_value=0.2,
+	},
+
+    -- Cargo/Fluid Wagons --
+
+    {
+        type="string-setting",
+        name=common.mod_prefix .. "wagon-size-quality-scaling-method",
+        setting_type="startup",
+        allowed_values={"disabled", "delta_constant", "delta_additive", "delta_multiplicative"},
+        default_value="delta_additive"
+    },
+
+    {
+		type="double-setting",
+		name=common.mod_prefix .. "wagon-size-quality-scaling-value",
+		setting_type="startup",
+		default_value=0.2,
+	},
+
+    -- Mining Drills/Pumpjacks --
+
+    {
+        type="string-setting",
+        name=common.mod_prefix .. "miner-speed-quality-scaling-method",
+        setting_type="startup",
+        allowed_values={"disabled", "delta_constant", "delta_additive", "delta_multiplicative"},
+        default_value="delta_additive"
+    },
+
+    {
+		type="double-setting",
+		name=common.mod_prefix .. "miner-speed-quality-scaling-value",
+		setting_type="startup",
+		default_value=0.2,
+	},
+
+    -- Roboport --
+
+    {
+        type="bool-setting",
+        name=common.mod_prefix .. "tileable-legendary-roboport",
+        setting_type="startup",
+        default_value=true,
+    },
+
+    -- Substation --
+
+    {
+        type="bool-setting",
+        name=common.mod_prefix .. "tileable-legendary-substation",
+        setting_type="startup",
+        default_value=true,
+    },
+
+    -- Big Electric Pole --
+
+    {
+        type="bool-setting",
+        name=common.mod_prefix .. "tileable-legendary-big-electric-pole",
+        setting_type="startup",
+        default_value=true,
+    },
+
 })
