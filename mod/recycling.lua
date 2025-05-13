@@ -90,12 +90,12 @@ local function generate_bulk_recycling_recipe(bulk_recycler_internal_name, recip
     })
 end
 
-if common.config("alternative-recycler-output-location") then
+if common.config("alternative-recycler-output-location").value then
     success, response = pcall(alter_recycler_output_location)
     if response then common.error_handler(response, "alter_recycler_output_location()") end
 end
 
-if common.config("bulk-recycler-enabled") then
+if common.config("bulk-recycler-enabled").value then
     local bulk_recycler_internal_name = common.mod_prefix .. "bulk-recycler"
 
     success, response = pcall(generate_bulk_recycling_category)

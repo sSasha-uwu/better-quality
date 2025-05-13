@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.4.1
+  Bugfixes:
+    - Fixed Recycler options always being active no matter what.
+---------------------------------------------------------------------------------------------------
 Version: 2.4.0
   Major Features:
     - Added settings to the Quality scaling of all items.
